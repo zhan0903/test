@@ -37,7 +37,9 @@ class Net(nn.Module):
 
 
 def worker(params_iterator):
-    return params_iterator + 2
+    while True:
+        params_iterator = params_iterator+1
+    return params_iterator + 1
 
 
 def test_worker_in_mpi():
