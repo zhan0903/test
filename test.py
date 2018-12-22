@@ -19,8 +19,6 @@ import math
 #         x = 2*x
 #         writer.add_scalar("best_agent_5 %s" % item, x, index)
 #         # count = count + 1
-
-
 class Net(nn.Module):
     def __init__(self, input_shape, n_actions):
         super(Net, self).__init__()

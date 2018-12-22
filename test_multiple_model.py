@@ -36,11 +36,17 @@ class Net(nn.Module):
 
 
 def worker(params_iterator):
-    pass
+    return params_iterator + 1
 
 
 def test_worker_in_mpi():
-    paras_iterator = [1,2,3,4]
+    params_iterator = [1, 2, 3, 4]
     mp = torch.multiprocessing.get_context('forkserver')
     pool = mp.Pool(processes=1) # ,maxtasksperchild=1
-    rez = pool.map(worker, params_iterator)
+    result = pool.map(worker, params_iterator)
+    pool.close()
+    pool.join()
+
+    assert len(result) == 4
+    assert sum(result) == 14
+
