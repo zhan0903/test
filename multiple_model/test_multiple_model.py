@@ -37,7 +37,7 @@ class Net(nn.Module):
 
 
 def worker(params_iterator):
-    return params_iterator + 1
+    return params_iterator + 2
 
 
 def test_worker_in_mpi():
@@ -47,7 +47,6 @@ def test_worker_in_mpi():
     result = pool.map(worker, params_iterator)
     pool.close()
     pool.join()
-    print(result)
 
     assert len(result) == 4
     assert sum(result) == 14
