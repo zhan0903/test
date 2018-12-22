@@ -47,6 +47,7 @@ def test_worker_in_mpi():
     result = pool.map(worker, params_iterator)
     pool.close()
     pool.join()
+    print(result)
 
     assert len(result) == 4
     assert sum(result) == 14
